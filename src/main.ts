@@ -6,7 +6,7 @@ const gameName = "Luc's Game!";
 document.title = gameName;
 
 const button = document.createElement("Button");
-let counter = 0;
+let counter: number = 0;
 
 //displaying counter
 const counterDisplay = document.createElement("p");
@@ -25,9 +25,16 @@ document.body.appendChild(button); // Appending button
 button.addEventListener("click", () => {
   counter += 1;
   console.log(counter);
-  counterDisplay.textContent = `Counter: ${counter}`; //updating counter to appear properly
+  counterDisplay.textContent = `Counter: ${counter}`; // Updating counter to appear properly
 });
 
 const header = document.createElement("h1");
 header.innerHTML = gameName;
 app.append(header);
+
+
+//Increasing counter every 1 second
+setInterval(() => {
+    counter += 1;
+    counterDisplay.textContent = `Counter: ${counter}`; // Updating counter to appear properly
+}, 1000);
