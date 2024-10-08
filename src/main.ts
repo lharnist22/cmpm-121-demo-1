@@ -82,7 +82,6 @@ function increaseCounter(currTime: number) {
   upgrade3.disabled = counter < 1000;
 }
 
-
 //Starting time cycle
 requestAnimationFrame(increaseCounter);
 
