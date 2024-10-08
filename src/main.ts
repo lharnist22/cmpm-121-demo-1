@@ -77,9 +77,9 @@ function increaseCounter(currTime: number) {
   //Calling function recursively to continue forever
   requestAnimationFrame(increaseCounter);
   //console.log(elapsed);
-  upgrade1.disabled = counter < 10;
-  upgrade2.disabled = counter < 100;
-  upgrade3.disabled = counter < 1000;
+  upgrade1.disabled = counter < (10 + (upgrade1c * 1.15 ));
+  upgrade2.disabled = counter < (100 + (upgrade2c * 1.15));
+  upgrade3.disabled = counter < (1000 + (upgrade3c * 1.15));
 }
 
 //Starting time cycle
@@ -95,7 +95,8 @@ upgrade1.disabled = true; // Initially disabled
 document.body.appendChild(upgrade1);
 
 upgrade1.addEventListener("click", () => {
-  if (counter >= 10) {
+  if (counter >= (10 + (upgrade1c * 1.15 ))){
+    console.log((10 + (upgrade1c * 1.15 )));
     counter -= 10;
     growthRate += 1;
     upgrade1c += 1;
