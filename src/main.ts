@@ -32,8 +32,22 @@ const header = document.createElement("h1");
 header.innerHTML = gameName;
 app.append(header);
 
-//Increasing counter every 1 second
-setInterval(() => {
-  counter += 1;
-  counterDisplay.textContent = `Counter: ${counter}`; // Updating counter to appear properly
-}, 1000);
+let start = performance.now(); // Starting frame
+
+function increaseCounter(currTime: number){
+    //Calcing total time passed inbetween frames
+    const  elapsed = currTime - start;
+    start = currTime;
+
+    //Increasing counter
+    counter += elapsed / 1000;
+
+    counterDisplay.textContent = `Counter: ${counter}`; // Updating counter to appear properly
+
+    //Calling function recursively to continue forever
+    requestAnimationFrame(increaseCounter);
+    //console.log(elapsed);
+}
+
+//Starting time cycle
+requestAnimationFrame(increaseCounter);
