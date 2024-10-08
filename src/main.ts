@@ -51,13 +51,12 @@ function increaseCounter(currTime: number) {
   requestAnimationFrame(increaseCounter);
   //console.log(elapsed);
   upgrade.disabled = counter < 10;
-  
 }
 
 //Starting time cycle
 requestAnimationFrame(increaseCounter);
 
-const upgrade = document.createElement("Button");
+const upgrade = document.createElement("button") as HTMLButtonElement;
 upgrade.textContent = "Buy Growth Upgrade";
 upgrade.style.position = "absolute";
 upgrade.style.top = "70%";
@@ -67,9 +66,9 @@ upgrade.disabled = true; // Initially disabled
 document.body.appendChild(upgrade);
 
 upgrade.addEventListener("click", () => {
-    if (counter >= 10){
-        counter -= 10;
-        growthRate += 1;
-        counterDisplay.textContent = `Counter: ${counter}`; // Updating counter to appear properly
-    }
-})
+  if (counter >= 10) {
+    counter -= 10;
+    growthRate += 1;
+    counterDisplay.textContent = `Counter: ${counter}`; // Updating counter to appear properly
+  }
+});
