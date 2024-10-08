@@ -32,9 +32,8 @@ const header = document.createElement("h1");
 header.innerHTML = gameName;
 app.append(header);
 
-
 //Increasing counter every 1 second
 setInterval(() => {
-    counter += 1;
-    counterDisplay.textContent = `Counter: ${counter}`; // Updating counter to appear properly
+  counter += 1;
+  counterDisplay.textContent = `Counter: ${counter}`; // Updating counter to appear properly
 }, 1000);
