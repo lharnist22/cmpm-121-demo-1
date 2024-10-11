@@ -10,7 +10,6 @@ const button = document.createElement("Button");
 let counter: number = 0;
 let growthRate = 0;
 
-
 interface Item {
   name: string;
   cost: number;
@@ -19,8 +18,11 @@ interface Item {
 
 const availableItems: Item[] = [
   { name: "Preworkout", cost: 10, rate: 1 },
+  { name: "Protein powder", cost: 30, rate: 1.5},
   { name: "Creatine", cost: 100, rate: 2 },
   { name: "Tren", cost: 1000, rate: 50 },
+  { name: "BCAAs", cost: 5000, rate: 75},
+  
 ];
 
 const upgradeCounts = Array(availableItems.length).fill(0);
@@ -33,18 +35,16 @@ counterDisplay.style.left = "50%";
 counterDisplay.style.transform = "translate(-50%, 0)";
 document.body.appendChild(counterDisplay);
 
-//display upgrade 1
-const upgradeDisplays = availableItems.map((item, index) => {
+//display upgrades
+const upgradeDisplays = availableItems.map((_, index) => {
   const upgradeDisplay = document.createElement("p");
   upgradeDisplay.style.position = "absolute";
   upgradeDisplay.style.top = "80%";
-  upgradeDisplay.style.left = `${30 + index * 20}%`;
+  upgradeDisplay.style.left = `${10 + index * 20}%`;
   upgradeDisplay.style.transform = "translate(-50%, 0)";
   document.body.appendChild(upgradeDisplay);
   return upgradeDisplay;
 });
-
-
 
 button.textContent = "❚█══█❚ Rep!"; //Emoji next to button
 button.style.position = "absolute";
@@ -89,7 +89,7 @@ availableItems.forEach((item, index) => {
   upgradeButton.textContent = item.name;
   upgradeButton.style.position = "absolute";
   upgradeButton.style.top = "70%";
-  upgradeButton.style.left = `${30 + index * 20}%`;
+  upgradeButton.style.left = `${10 + index * 20}%`;
   upgradeButton.style.transform = "translate(-50%, 0)";
   upgradeButton.disabled = true;
   document.body.appendChild(upgradeButton);
@@ -101,7 +101,8 @@ availableItems.forEach((item, index) => {
       growthRate += item.rate;
       upgradeCounts[index] += 1;
       counterDisplay.textContent = `Reps: ${counter}`;
-      upgradeDisplays[index].textContent = `${item.name}: ${upgradeCounts[index]}`;
+      upgradeDisplays[index].textContent =
+        `${item.name}: ${upgradeCounts[index]}`;
     }
   });
 });
