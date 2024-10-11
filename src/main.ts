@@ -18,11 +18,10 @@ interface Item {
 
 const availableItems: Item[] = [
   { name: "Preworkout", cost: 10, rate: 1 },
-  { name: "Protein powder", cost: 30, rate: 1.5},
+  { name: "Protein powder", cost: 30, rate: 1.5 },
   { name: "Creatine", cost: 100, rate: 2 },
   { name: "Tren", cost: 1000, rate: 50 },
-  { name: "BCAAs", cost: 5000, rate: 75},
-  
+  { name: "BCAAs", cost: 5000, rate: 75 },
 ];
 
 const upgradeCounts = Array(availableItems.length).fill(0);
@@ -73,8 +72,11 @@ function increaseCounter(currTime: number) {
   counterDisplay.textContent = `Reps: ${counter.toFixed(1)}`;
 
   availableItems.forEach((item, index) => {
-    const upgradeButton = document.querySelector(`#upgrade${index}`) as HTMLButtonElement;
-    upgradeButton.disabled = counter < item.cost * Math.pow(1.15, upgradeCounts[index]);
+    const upgradeButton = document.querySelector(
+      `#upgrade${index}`,
+    ) as HTMLButtonElement;
+    upgradeButton.disabled =
+      counter < item.cost * Math.pow(1.15, upgradeCounts[index]);
   });
 
   requestAnimationFrame(increaseCounter);
