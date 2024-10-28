@@ -4,8 +4,9 @@ const app: HTMLDivElement = document.querySelector("#app")!;
 
 const gameName = "Luc's Gym!";
 document.title = gameName;
-
-const button = document.createElement("Button");
+const header = document.createElement("h1");
+header.innerHTML = gameName;
+app.append(header);
 
 let counter: number = 0;
 let growthRate = 0;
@@ -45,25 +46,23 @@ const upgradeDisplays = availableItems.map((_, index) => {
   return upgradeDisplay;
 });
 
-button.textContent = "❚█══█❚ Rep!"; //Emoji next to button
-button.style.position = "absolute";
-button.style.top = "40%"; // Used to place button properly
-button.style.left = "50%"; // Used to place button properly
-button.style.transform = "translate(-50%, -50%)"; // Used to place button properly
-document.body.appendChild(button); // Appending button
+//Rep Button
+const repButton = document.createElement("Button");
+repButton.textContent = "❚█══█❚ Rep!"; //Emoji next to button
+repButton.style.position = "absolute";
+repButton.style.top = "40%"; // Used to place button properly
+repButton.style.left = "50%"; // Used to place button properly
+repButton.style.transform = "translate(-50%, -50%)"; // Used to place button properly
+document.body.appendChild(repButton); // Appending button
 
-button.addEventListener("click", () => {
+repButton.addEventListener("click", () => {
   counter += 1;
-  console.log(counter);
   counterDisplay.textContent = `Reps: ${counter}`; // Updating counter to appear properly
 });
 
-const header = document.createElement("h1");
-header.innerHTML = gameName;
-app.append(header);
-
 let start = performance.now(); // Starting frame
 
+//Increasing counter price
 function increaseCounter(currTime: number) {
   const elapsed = currTime - start;
   start = currTime;
@@ -72,11 +71,8 @@ function increaseCounter(currTime: number) {
   counterDisplay.textContent = `Reps: ${counter.toFixed(1)}`;
 
   availableItems.forEach((item, index) => {
-    const upgradeButton = document.querySelector(
-      `#upgrade${index}`,
-    ) as HTMLButtonElement;
-    upgradeButton.disabled =
-      counter < item.cost * Math.pow(1.15, upgradeCounts[index]);
+    const upgradeButton = document.querySelector(`#upgrade${index}`,) as HTMLButtonElement;
+    upgradeButton.disabled = counter < item.cost * Math.pow(1.15, upgradeCounts[index]);
   });
 
   requestAnimationFrame(increaseCounter);
