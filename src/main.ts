@@ -1,5 +1,6 @@
 import "./style.css";
 import image from "./bench.png";
+//https://github.com/scso-ucsc/Incremental-Game-Development/tree/main
 
 const app: HTMLDivElement = document.querySelector("#app")!;
 
@@ -52,6 +53,10 @@ const repButton = document.createElement("Button");
 const img = document.createElement("img");
 img.src = image;
 repButton.appendChild(img);
+/*
+Everything above this comment I saw in the github below and applied to my own
+https://github.com/scso-ucsc/Incremental-Game-Development/tree/main
+*/
 repButton.textContent = "❚█══█❚ Rep!"; //Emoji next to button
 repButton.style.position = "absolute";
 repButton.style.top = "40%"; // Used to place button properly
