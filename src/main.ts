@@ -1,4 +1,5 @@
 import "./style.css";
+import image from "./bench.png";
 
 const app: HTMLDivElement = document.querySelector("#app")!;
 
@@ -48,6 +49,9 @@ const upgradeDisplays = availableItems.map((_, index) => {
 
 //Rep Button
 const repButton = document.createElement("Button");
+const img = document.createElement("img");
+img.src = image;
+repButton.appendChild(img);
 repButton.textContent = "❚█══█❚ Rep!"; //Emoji next to button
 repButton.style.position = "absolute";
 repButton.style.top = "40%"; // Used to place button properly
